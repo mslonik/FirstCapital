@@ -2,8 +2,6 @@
 #SingleInstance, 	force
 #Warn
 #NoEnv
-#KeyHistory, 		100
-SendMode,			Input
 
 	o_ih			:= InputHook("C V * E", , F_DefineMatch())	;C = CaseSensitive = true, V = VisibleText = true, E = handle single-character end keys character code instead of key code
 ,	o_ih.OnEnd	:= Func("F_OnEnd")
