@@ -5,7 +5,7 @@
 #KeyHistory, 		100
 SendMode,			Input
 
-	o_ih			:= InputHook("C V * E", , F_DefineMatch())	;C = CaseSensitive = true, L0 = disables collection of text and the length limit, V = VisibleText = true, E = handle single-character end keys character code instead of key code
+	o_ih			:= InputHook("C V * E", , F_DefineMatch())	;C = CaseSensitive = true, V = VisibleText = true, E = handle single-character end keys character code instead of key code
 ,	o_ih.OnEnd	:= Func("F_OnEnd")
 	o_ih.Start()
 
@@ -13,7 +13,7 @@ F_OnEnd(o_ih)
 {
 	SendInput, % "{BS}"
 	SendLevel, 2
-	SendInput, % Format("{:U}", SubStr(o_ih.Match, 0))
+	SendInput, % Format("{:U}", SubStr(o_ih.Match, 0))	;change last character of matching sequence to uppercase
 	SendLevel, 0
 	o_ih.Start()
 }
