@@ -9,13 +9,18 @@ c_NoOfAlphabetLetters	:= 26	;c_ constant
 , c_OrdinaryLetters		:= 96	;c_ constant
 , c_CapitalLetters		:= 64	;c_ constant
 , IconAsteriskInfo		:= 64
-, v_IfRun				:= true	;v_ variable, global; determines if script definitions should run
+, v_IfRun				:= false	;v_ variable, global; determines if script definitions should run
 
 F_FirstCapital(v_IfRun)
 Menu, Tray, Icon, imageres.dll, 124     ; this line will turn the H icon into a yellow page with green triangle.
 F_TrayMenu()
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+:*:fcshow/::
+	MsgBox, % IconAsteriskInfo, % SubStr(A_ScriptName, 1, -4) . ":" . A_Space . "information", % "Current state of script hotstrings:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED") . "."
+return
+
+:*:fctoggle/::
 F23::					;switch state of application when v_IfRun is set application would run.
 :*:f23/::
 	v_IfRun		:= !v_IfRun
@@ -42,13 +47,13 @@ F_FirstCapital(v_IfRun)
 	else
 	{
 		Loop, % c_NoOfAlphabetLetters
-			Hotstring(":CB0?*:. " 	. Chr(A_Index + c_OrdinaryLetters), , "Off")
+			Hotstring(":CB0?*:. " 	. Chr(A_Index + c_OrdinaryLetters), "{BS}" . Chr(A_Index + c_CapitalLetters), "Off")
 		Loop, % c_NoOfAlphabetLetters
-			Hotstring(":CB0?*:! " 	. Chr(A_Index + c_OrdinaryLetters), , "Off")
+			Hotstring(":CB0?*:! " 	. Chr(A_Index + c_OrdinaryLetters), "{BS}" . Chr(A_Index + c_CapitalLetters), "Off")
 		Loop, % c_NoOfAlphabetLetters
-			Hotstring(":CB0?*:? " 	. Chr(A_Index + c_OrdinaryLetters), , "Off")
+			Hotstring(":CB0?*:? " 	. Chr(A_Index + c_OrdinaryLetters), "{BS}" . Chr(A_Index + c_CapitalLetters), "Off")
 		Loop, % c_NoOfAlphabetLetters
-			Hotstring(":CB0?*:`n" 	. Chr(A_Index + c_OrdinaryLetters), , "Off")
+			Hotstring(":CB0?*:`n" 	. Chr(A_Index + c_OrdinaryLetters), "{BS}" . Chr(A_Index + c_CapitalLetters), "Off")
 	}
 	Hotstring("Reset")
 }
