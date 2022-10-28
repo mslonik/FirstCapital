@@ -1,7 +1,7 @@
 ﻿/* 
  	Author:      	Maciej Słojewski (🐘, mslonik, http://mslonik.pl)
- 	Purpose:     	Facilitate maintenance of (triggerstring, hotstring) concept.
- 	Description: 	Hotstrings AutoHotkey concept expanded, editable with GUI and many more options.
+ 	Purpose:     	Reduce usage of Shift key(s) modifiers on time of typing.
+ 	Description: 	After some punctuation marks (., ?, !, <Enter>) automatically converts first letter into capitalized form.
  	License:     	GNU GPL v.3
 	Notes:		Run this script as the first one, before any Hotstring definition (static or dynamic).
 				Save this as UTF-8 with BOM.
