@@ -4,7 +4,7 @@
  	Description: 	After some punctuation marks (., ?, !, <Enter>) automatically converts first letter into capitalized form.
  	License:     	GNU GPL v.3
 	Notes:		Run this script as the first one, before any Hotstring definition (static or dynamic).
-				Save this as UTF-8 with BOM.
+				Save this file as UTF-8 with BOM.
 */
 #SingleInstance, 	force	; Only one instance of this script may run at a time!
 #Warn					; Enable warnings to assist with detecting common errors.
@@ -74,9 +74,7 @@ return
 :*:fctoggle/::
 F23::					;switch state of application; when v_IfRun is set application would run.
 :*:f23/::
-	v_IfRun		:= !v_IfRun
-	F_FirstCapital(v_IfRun)
-	MsgBox, % IconAsteriskInfo, % SubStr(A_ScriptName, 1, -4) . ":" . A_Space . "information", % "Current state of script hotstrings:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED") . "."
+	F_Toggle()
 return
 ; - - - - - - - - - - - - - - GLOBAL HOTSTRINGS: END- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -110,15 +108,45 @@ F_FirstCapital(v_IfRun)
 	Hotstring("Reset")
 }
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+F_Toggle()
+{
+	global	;assume-global mode of operation
+	local	PreviousState := v_IfRun
+
+	v_IfRun		:= !v_IfRun
+	F_FirstCapital(v_IfRun)
+	Menu, Tray, Rename, % A_ScriptName . A_Space . "status:" . A_Space . (PreviousState ? "ENABLED" : "DISABLED"), % A_ScriptName . A_Space . "status:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED")
+	MsgBox, % IconAsteriskInfo, % SubStr(A_ScriptName, 1, -4) . ":" . A_Space . "information", % "Current state of script hotstrings:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED") . "."
+}
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+F_Empty()
+{}
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 F_TrayMenu()
 {
-    	Menu, Tray, Add, % A_ScriptName, 	F_Help
-	Menu, Tray, Add, Help..., 		F_Help
-    	Menu, Tray, Default, % A_ScriptName ; Default: Changes the menu's default item to be the specified menu item and makes its font bold.
+    	Menu, Tray, Add, % A_ScriptName . A_Space . "status:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED"),	F_Empty
+	Menu, Tray, Add, Toggle application status,													F_Toggle
+	Menu, Tray, Add, Control help...,															F_Help
+	Menu, Tray, Add, About,																	F_About
     	Menu, Tray, Add ; To add a menu separator line, omit all three parameters. To put your menu items on top of the standard menu items (after adding your own menu items) run Menu, Tray, NoStandard followed by Menu, Tray, Standard.
+    	Menu, Tray, Default, % A_ScriptName . A_Space . "status:" . A_Space . (v_IfRun ? "ENABLED" : "DISABLED") ; Default: Changes the menu's default item to be the specified menu item and makes its font bold.
     	Menu, Tray, NoStandard
     	Menu, Tray, Standard
     	Menu, Tray, Tip, % SubStr(A_ScriptName, 1, -4) ; Changes the tray icon's tooltip.
+}
+; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+F_About()
+{
+	MsgBox, 64, % SubStr(A_ScriptName, 1, -4) . ":" . A_Space . "information", % "Application automatically replaces ordinary letters to capital letters following the punctuation marks:"
+		. "`n`n"
+		. "." . A_Tab . A_Tab . 			"e.g. foo. bar → foo. Bar"				. "`n"
+		. "!" . A_Tab . A_Tab . 			"e.g. foo! bar → foo! Bar"				. "`n"
+		. "?" . A_Tab . A_Tab .			"e.g. foo? bar → foo? Bar"				. "`n"
+		. "<enter>" . A_Tab . A_Tab . 	"e.g. foo<enter>bar → foo<enter>Bar"		. "`n"
+		. "`n`n"
+		. "Runtime file location:" . A_Tab . A_ScriptDir							. "`n"
+		. "License:" . A_Tab . A_Tab .	"GNU GPL v3.x"							. "`n"
+		. "Author:" . A_Tab . A_Tab . 	"Maciej Słojewski (🐘), http://mslonik.pl"
 }
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 F_Help()
