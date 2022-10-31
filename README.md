@@ -11,6 +11,7 @@ License: GNU GPL v3.x (GNU's Not Unix! General Public License).
 Purpose: automatic capitalization the first letter in sentence.
 
 Author: Maciej Słojewski (🐘), http://mslonik.pl.
+
 <br /><br />
 
 ## Chainge log
@@ -18,6 +19,7 @@ Author: Maciej Słojewski (🐘), http://mslonik.pl.
 | Release | Date | Release notes |
 | :---         |     :---:      |          :--- |
 | 1.0.0   | 2022-10-31     | The first stable release.    |
+
 <br /><br />
 
 ## Purpose, detailed
@@ -36,6 +38,7 @@ In ohter words application uses so called hotstrings to mimic automatic capitali
 Please mind this application is not able to completely replace the same functionality offered by other applications natively. For example the very first sentence / character entered in a new window will not be replaced as there is no previous punctuation character to be recognized as fitting to replacement pattern.
 
 **Hint**. Some simple editors, e.g. in text messengers like Signal, the empty first lines are not shown. So you can press <enter> which will not be shown as empty line in messenger window, but can start text replacement sequence of **First Capital Hotstrings**.
+
 <br /><br />
 
 ## Control
@@ -44,6 +47,7 @@ It is possible to disable and later disable application on time it is running. I
 When disabled, above text patterns are not converted automatically anymore. 
 
 User may control the script / application over the following means:
+
 <br /><br />
 
 ### System tray icon
@@ -58,6 +62,7 @@ The first context menu line in **bold** shows actual status of application.
 The second one may be used to toggle status of appliction (ENABLED → DISABLED or other way around).
 The third one shows message box about different ways to control status of application.
 The last one shows message box about purpose and some basic application info.
+
 <br /><br />
 
 ### Command line
@@ -66,6 +71,7 @@ In CLI (Command Line Interface) you can enter only one parameter:
 | :---:         |     :---      |
 | -d   | starts application in disabled state     |
 | -e     | starts application in enabled state (default)      |
+
 <br /><br />
 
 ### Hotstrings
@@ -84,6 +90,7 @@ All these hotstrings are "immediate execute" (*) and their hotstring is empty st
 | fcexit/ 		| exit application					|
 
 ![FirstCapitalHotstrings application context menu](pictures\Help.png).
+
 <br /><br />
 ## Remarks / not implemented features
 - Feedback to user:
@@ -93,6 +100,7 @@ All these hotstrings are "immediate execute" (*) and their hotstring is empty st
 - Configuration file to store any user specific settings for future use.
 
 There is no plan to implement any of above features. Potentially functionality of this script can be implemented within **Hotstrings** application, but with dedicated triggerstring recognizer (dedicated to purpose of this task).
+
  <br /><br /><br />
 # Acknowledgments
 
