@@ -18,7 +18,7 @@ global AppVersion			:= "1.0.0"
 ;@Ahk2Exe-Let vAppVersion=%A_PriorLine~U)^(.+"){1}(.+)".*$~$2% ; Keep these lines together
 ;Overrides the custom EXE icon used for compilation
 ;@Ahk2Exe-SetCopyright GNU GPL 3.x
-;@Ahk2Exe-SetDescription After some punctuation marks (., ?, !, <Enter>) automatically converts first letter into capitalized form.
+;@Ahk2Exe-SetDescription After some punctuation marks (.`, ?`, !`, <Enter>) automatically converts first letter into capitalized form.
 ;@Ahk2Exe-SetProductName Original script name: %A_ScriptName%
 ;@Ahk2Exe-Set OriginalScriptlocation, https://github.com/mslonik/FirstCapital
 ;@Ahk2Exe-SetCompanyName  http://mslonik.pl
