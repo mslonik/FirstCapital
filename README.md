@@ -51,12 +51,12 @@ User may control the script / application over the following means:
 <br /><br />
 
 ### System tray icon
-When application runs its state can be checked by left button click by mouse on System tray "<" icon (usually located at bottom right corner of a screen or taskbar) ![system tray icon](pictures\SysTray.png) and then by right button click by mouse on **FirstCapitalHotstrings** icon: ![FirstCapitalHotstrings application icon](pictures\FirstCapitalHotstringIcon.png). 
+When application runs its state can be checked by left button click by mouse on System tray "<" icon (usually located at bottom right corner of a screen or taskbar) ![system tray icon](pictures/SysTray.png) and then by right button click by mouse on **FirstCapitalHotstrings** icon: ![FirstCapitalHotstrings application icon](pictures/FirstCapitalHotstringIcon.png). 
 
 Alternatively using keyboard only: to select system tray use shortcut "# + B" (Windows modifier key down and then press B, release both keys); navigate by pressing cursor keys (→, ←, ↑, ↓) to FirstCapitalHotstrings application icon and then press context menu key (hamburger menu) or press "Shift + F10" (Shift modifier key down and then press F10 funciton key, release both keys).
 
 You will gain access to the following menu: <br />
-![FirstCapitalHotstrings application context menu](pictures\ContextMenu.png).
+![FirstCapitalHotstrings application context menu](pictures/ContextMenu.png).
 
 The first context menu line in **bold** shows actual status of application.
 The second one may be used to toggle status of appliction (ENABLED → DISABLED or other way around).
@@ -89,7 +89,7 @@ All these hotstrings are "immediate execute" (*) and their hotstring is empty st
 | fcreload/ 	 	| reload application				|
 | fcexit/ 		| exit application					|
 
-![FirstCapitalHotstrings application context menu](pictures\Help.png).
+![FirstCapitalHotstrings application context menu](pictures/Help.png).
 
 <br /><br />
 ## Remarks / not implemented features
